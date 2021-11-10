@@ -1,0 +1,22 @@
+{
+  "name": "cdk-project",
+  "author": "David Barreto <barretollano@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "@local/cdk",
+    "@local/client",
+    "@local/lambdas"
+  ],
+  "scripts": {
+    "build": "npm run bundle -w @local/lambdas && npm run build -w @local/cdk"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.6",
+    "jest": "^27.3.1",
+    "prettier": "^2.4.1",
+    "ts-jest": "^27.0.7",
+    "typescript": "^4.4.4"
+  }
+}
