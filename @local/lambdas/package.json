@@ -4,13 +4,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "bundle": "webpack",
-    "zip:lambda": "cd dist/${LAMBDA} && zip index.zip index.js",
-    "zip:all": "LAMBDA=lambda-a npm run zip:lambda && LAMBDA=lambda-b npm run zip:lambda",
-    "update:lambda": "aws lambda update-function-code --function-name ${LAMBDA} --zip-file fileb://dist/${LAMBDA}/index.zip --no-cli-pager",
-    "update:all": "LAMBDA=lambda-a npm run update:lambda && LAMBDA=lambda-b npm run update:lambda",
-    "deploy:lambda": "npm run bundle && npm run zip:lambda && npm run update:lambda",
-    "deploy:all": "npm run bundle && npm run zip:all && npm run update:all"
+    "bundle": "webpack"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.84",

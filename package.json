@@ -9,7 +9,9 @@
     "@local/lambdas"
   ],
   "scripts": {
-    "build": "npm run bundle -w @local/lambdas && npm run build -w @local/cdk"
+    "compile": "tsc -b tsconfig.build.json",
+    "build": "npm run bundle -w @local/lambdas && npm run compile",
+    "deploy": "npm run build && npm run deploy -w @local/cdk"
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",

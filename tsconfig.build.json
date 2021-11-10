@@ -1,0 +1,4 @@
+{
+  "files": [],
+  "references": [{ "path": "./@local/client" }, { "path": "./@local/cdk" }]
+}

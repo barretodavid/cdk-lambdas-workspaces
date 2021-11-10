@@ -1,15 +1,25 @@
-import * as cdk from '@aws-cdk/core';
-// import * as sqs from '@aws-cdk/aws-sqs';
+import { LambdaIntegration, RestApi } from "@aws-cdk/aws-apigateway";
+import { Stack, Construct, StackProps } from "@aws-cdk/core";
+import { Lambda } from "./lambda";
 
-export class CdkStack extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
+export class CdkStack extends Stack {
+  constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    // The code that defines your stack goes here
+    const lambdaA = new Lambda(this, "lambda-a");
+    const lambdaB = new Lambda(this, "lambda-b");
 
-    // example resource
-    // const queue = new sqs.Queue(this, 'CdkQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
+    const api = new RestApi(this, "example-api", {
+      defaultCorsPreflightOptions: {
+        allowOrigins: ["*"],
+      },
+    });
+
+    api.root
+      .addResource("lambda-a")
+      .addMethod("GET", new LambdaIntegration(lambdaA.ref));
+    api.root
+      .addResource("lambda-b")
+      .addMethod("GET", new LambdaIntegration(lambdaB.ref));
   }
 }

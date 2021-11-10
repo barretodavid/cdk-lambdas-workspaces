@@ -2,11 +2,14 @@
   "name": "@local/cdk",
   "private": true,
   "license": "MIT",
+  "main": "dist/main.js",
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
-    "cdk": "cdk"
+    "cdk": "cdk",
+    "bootstrap": "cdk bootstrap",
+    "deploy": "cdk deploy --require-approval never --outputs-file dist/output.json"
   },
   "devDependencies": {
     "@aws-cdk/assertions": "1.132.0",
@@ -14,6 +17,8 @@
     "ts-node": "^9.0.0"
   },
   "dependencies": {
+    "@aws-cdk/aws-apigateway": "^1.132.0",
+    "@aws-cdk/aws-lambda": "^1.132.0",
     "@aws-cdk/core": "1.132.0",
     "source-map-support": "^0.5.16"
   }

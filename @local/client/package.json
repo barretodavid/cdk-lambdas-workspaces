@@ -1,0 +1,13 @@
+{
+  "name": "@local/client",
+  "private": true,
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "node dist/main.js",
+    "clean": "rm -rf dist",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "axios": "^0.24.0"
+  }
+}
